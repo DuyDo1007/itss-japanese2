@@ -1,0 +1,252 @@
+◇ injected env (4) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+🚀 Server running at http://localhost:5000
+📋 Routes available:
+   GET  /api/health
+   GET  /api/courses
+   GET  /api/slides
+   GET  /api/terms
+   POST /api/quiz/generate
+   POST /api/quiz/check
+✅ MongoDB connected
+[0mGET /api/health [32m200[0m 7.558 ms - 57[0m
+[0mGET /api/terms?limit=3 [32m200[0m 24.785 ms - 2506[0m
+[0mGET /api/courses [32m200[0m 27.630 ms - 571[0m
+[0mGET /api/courses [32m200[0m 5.380 ms - 571[0m
+[0mGET /api/courses [36m304[0m 6.071 ms - -[0m
+📥 Req.body: [Object: null prototype] { title: '08_解決策（仮説）発見' }
+📦 Req.file: {
+  fieldname: 'file',
+  originalname: '08_è§£æ±ºç­\x96ï¼\x88ä»®èª¬ï¼\x89ç\x99ºè¦\x8B.pdf',
+  encoding: '7bit',
+  mimetype: 'application/pdf',
+  buffer: <Buffer 25 50 44 46 2d 31 2e 33 0a 25 c4 e5 f2 e5 eb a7 f3 a0 d0 c4 c6 0a 33 20 30 20 6f 62 6a 0a 3c 3c 20 2f 46 69 6c 74 65 72 20 2f 46 6c 61 74 65 44 65 63 ... 736091 more bytes>,
+  size: 736141
+}
+[0mPOST /api/slides/analyze [33m422[0m 942.782 ms - 106[0m
+📥 Req.body: [Object: null prototype] {
+  content: '良い解決策を選ぶ観点やポイント、条件\r\n' +
+    '・明確である（誰が読んでも理解できる）こと\r\n' +
+    '・『アプリを開発する』など、システム開発が前提でないこと\r\n' +
+    '・解決策が実現できれ、感情がHappyになること',
+  title: ''
+}
+📦 Req.file: undefined
+🤖 Gọi Gemini AI để phân tích thuật ngữ...
+[0mPOST /api/slides/analyze [32m200[0m 360.340 ms - 823[0m
+[0mGET /api/courses [36m304[0m 9.131 ms - -[0m
+[0mGET /api/courses [36m304[0m 5.269 ms - -[0m
+[0mGET /api/courses [36m304[0m 5.719 ms - -[0m
+[0mGET /api/courses [36m304[0m 6.292 ms - -[0m
+📥 Req.body: [Object: null prototype] {
+  content: '良い解決策を選ぶ観点やポイント、条件\r\n' +
+    '・明確である（誰が読んでも理解できる）こと\r\n' +
+    '・『アプリを開発する』など、システム開発が前提でないこと\r\n' +
+    '・解決策が実現できれ、感情がHappyになること',
+  title: ''
+}
+📦 Req.file: undefined
+🤖 Gọi Gemini AI để phân tích thuật ngữ...
+[0mPOST /api/slides/analyze [32m200[0m 266.242 ms - 823[0m
+[0mGET /api/courses [36m304[0m 3.920 ms - -[0m
+[0mGET /api/courses [36m304[0m 4.574 ms - -[0m
+[0mGET /api/courses [32m200[0m 7.300 ms - 571[0m
+[0mGET /api/courses [36m304[0m 4.218 ms - -[0m
+📥 Req.body: [Object: null prototype] { title: 'Hướng-dẫn-BDHVS-Học-viên' }
+📦 Req.file: {
+  fieldname: 'file',
+  originalname: 'HÆ°á»\x9Bng-dáº«n-BDHVS-Há»\x8Dc-viÃªn.pdf',
+  encoding: '7bit',
+  mimetype: 'application/pdf',
+  buffer: <Buffer 25 50 44 46 2d 31 2e 34 0a 25 d3 eb e9 e1 0a 31 20 30 20 6f 62 6a 0a 3c 3c 2f 54 69 74 6c 65 20 3c 46 45 46 46 30 30 34 38 30 31 42 30 31 45 44 42 30 ... 4683274 more bytes>,
+  size: 4683324
+}
+[0mPOST /api/slides/analyze [33m422[0m 48.266 ms - 106[0m
+📥 Req.body: [Object: null prototype] {
+  content: '実用最小限\r\n' +
+    'でない機能例\r\n' +
+    '1. サインアップ（Sign up）機能\r\n' +
+    'ユーザを登録する必要なく、DBに保存をしておく\r\n' +
+    '2. ログイン（Log in）機能\r\n' +
+    'ユーザロールによる画面違いを見せたい場合、以下対応が可能：\r\n' +
+    'A：DBでなくフロントエンドにデータを持たせる\r\n' +
+    'B：URL埋め込みにする',
+  title: ''
+}
+📦 Req.file: undefined
+🤖 Gọi Gemini AI để phân tích thuật ngữ...
+[0mPOST /api/slides/analyze [32m200[0m 168.976 ms - 1028[0m
+[0mGET /api/courses [36m304[0m 7.598 ms - -[0m
+[0mGET /api/courses [36m304[0m 8.128 ms - -[0m
+📥 Req.body: [Object: null prototype] {
+  content: 'すること\r\n' +
+    '1. メンバー全員で、課題①解決策機能を考えて、G列に記載する（記入例次\r\n' +
+    'ページ以降）：8分\r\n' +
+    '2. メンバー同士で話し合い、不要な機能がないか再度\r\n' +
+    '3. 1と2を課題②に対しても同様に実施する\r\n' +
+    '4. 課題①と課題②両方に対して、上記1と2が終わったチーム リーダーが先生\r\n' +
+    'へ口頭で報告する\r\n' +
+    '5. 先生資料を確認し、3営業日内でFBをする',
+  title: ''
+}
+📦 Req.file: undefined
+🤖 Gọi Gemini AI để phân tích thuật ngữ...
+[0mPOST /api/slides/analyze [32m200[0m 148.420 ms - 1226[0m
+[0mGET /api/courses [36m304[0m 13.117 ms - -[0m
+[0mGET /api/courses [36m304[0m 4.278 ms - -[0m
+📥 Req.body: [Object: null prototype] {
+  content: 'すること\r\n' +
+    '1. メンバー全員で、課題①解決策機能を考えて、G列に記載する（記入例次\r\n' +
+    'ページ以降）：8分\r\n' +
+    '2. メンバー同士で話し合い、不要な機能がないか再度\r\n' +
+    '3. 1と2を課題②に対しても同様に実施する\r\n' +
+    '4. 課題①と課題②両方に対して、上記1と2が終わったチーム リーダーが先生\r\n' +
+    'へ口頭で報告する\r\n' +
+    '5. 先生資料を確認し、3営業日内でFBをする',
+  title: ''
+}
+📦 Req.file: undefined
+🤖 Gọi Gemini AI để phân tích thuật ngữ...
+[0mPOST /api/slides/analyze [32m200[0m 148.349 ms - 1226[0m
+[0mGET /api/courses [36m304[0m 3.017 ms - -[0m
+[0mGET /api/courses [36m304[0m 4.844 ms - -[0m
+📥 Req.body: [Object: null prototype] {
+  content: 'すること\r\n' +
+    '1. メンバー全員で、課題①解決策機能を考えて、G列に記載する（記入例次\r\n' +
+    'ページ以降）：8分\r\n' +
+    '2. メンバー同士で話し合い、不要な機能がないか再度\r\n' +
+    '3. 1と2を課題②に対しても同様に実施する\r\n' +
+    '4. 課題①と課題②両方に対して、上記1と2が終わったチーム リーダーが先生\r\n' +
+    'へ口頭で報告する\r\n' +
+    '5. 先生資料を確認し、3営業日内でFBをする',
+  title: ''
+}
+📦 Req.file: undefined
+🤖 Gọi Gemini AI để phân tích thuật ngữ...
+[0mPOST /api/slides/analyze [32m200[0m 189.932 ms - 1226[0m
+[0mGET /api/courses [36m304[0m 3.381 ms - -[0m
+[0mGET /api/courses [36m304[0m 5.116 ms - -[0m
+📥 Req.body: [Object: null prototype] {
+  content: '実用最小限\r\n' +
+    'でない機能例\r\n' +
+    '1. サインアップ（Sign up）機能\r\n' +
+    'ユーザを登録する必要なく、DBに保存をしておく\r\n' +
+    '2. ログイン（Log in）機能\r\n' +
+    'ユーザロールによる画面違いを見せたい場合、以下対応が可能：\r\n' +
+    'A：DBでなくフロントエンドにデータを持たせる\r\n' +
+    'B：URL埋め込みにする',
+  title: ''
+}
+📦 Req.file: undefined
+🤖 Gọi Gemini AI để phân tích thuật ngữ...
+[0mPOST /api/slides/analyze [32m200[0m 199.565 ms - 1028[0m
+[0mGET /api/courses [36m304[0m 4.712 ms - -[0m
+[0mGET /api/courses [36m304[0m 5.730 ms - -[0m
+📥 Req.body: [Object: null prototype] { title: '08_解決策（仮説）発見' }
+📦 Req.file: {
+  fieldname: 'file',
+  originalname: '08_è§£æ±ºç­\x96ï¼\x88ä»®èª¬ï¼\x89ç\x99ºè¦\x8B.pdf',
+  encoding: '7bit',
+  mimetype: 'application/pdf',
+  buffer: <Buffer 25 50 44 46 2d 31 2e 33 0a 25 c4 e5 f2 e5 eb a7 f3 a0 d0 c4 c6 0a 33 20 30 20 6f 62 6a 0a 3c 3c 20 2f 46 69 6c 74 65 72 20 2f 46 6c 61 74 65 44 65 63 ... 736091 more bytes>,
+  size: 736141
+}
+[0mPOST /api/slides/analyze [33m422[0m 11.379 ms - 106[0m
+📥 Req.body: {
+  content: '実用最小限\n' +
+    'でない機能例\n' +
+    '1. サインアップ（Sign up）機能\n' +
+    'ユーザを登録する必要なく、DBに保存をしておく\n' +
+    '2. ログイン（Log in）機能\n' +
+    'ユーザロールによる画面違いを見せたい場合、以下対応が可能：\n' +
+    'A：DBでなくフロントエンドにデータを持たせる\n' +
+    'B：URL埋め込みにする'
+}
+📦 Req.file: undefined
+🤖 Gọi Gemini AI để phân tích thuật ngữ...
+[0mPOST /api/slides/analyze [32m200[0m 178.472 ms - 1000[0m
+📥 Req.body: [Object: null prototype] {
+  content: '実用最小限\r\n' +
+    'でない機能例\r\n' +
+    '1. サインアップ（Sign up）機能\r\n' +
+    'ユーザを登録する必要なく、DBに保存をしておく\r\n' +
+    '2. ログイン（Log in）機能\r\n' +
+    'ユーザロールによる画面違いを見せたい場合、以下対応が可能：\r\n' +
+    'A：DBでなくフロントエンドにデータを持たせる\r\n' +
+    'B：URL埋め込みにする',
+  title: ''
+}
+📦 Req.file: undefined
+🤖 Gọi Gemini AI để phân tích thuật ngữ...
+[0mPOST /api/slides/analyze [32m200[0m 182.923 ms - 1028[0m
+[0mGET /api/courses [36m304[0m 4.809 ms - -[0m
+[0mGET /api/courses [36m304[0m 7.214 ms - -[0m
+[0mGET /api/courses [36m304[0m 4.542 ms - -[0m
+[0mGET /api/courses [36m304[0m 5.284 ms - -[0m
+📥 Req.body: [Object: null prototype] {
+  content: '実用最小限\r\n' +
+    'でない機能例\r\n' +
+    '1. サインアップ（Sign up）機能\r\n' +
+    'ユーザを登録する必要なく、DBに保存をしておく\r\n' +
+    '2. ログイン（Log in）機能\r\n' +
+    'ユーザロールによる画面違いを見せたい場合、以下対応が可能：\r\n' +
+    'A：DBでなくフロントエンドにデータを持たせる\r\n' +
+    'B：URL埋め込みにする',
+  title: ''
+}
+📦 Req.file: undefined
+🤖 Gọi Gemini AI để phân tích thuật ngữ...
+[0mPOST /api/slides/analyze [32m200[0m 177.829 ms - 1028[0m
+[0mGET /api/courses [36m304[0m 3.858 ms - -[0m
+[0mGET /api/courses [36m304[0m 4.450 ms - -[0m
+📥 Req.body: [Object: null prototype] {
+  content: '実用最小限\r\n' +
+    'でない機能例\r\n' +
+    '1. サインアップ（Sign up）機能\r\n' +
+    'ユーザを登録する必要なく、DBに保存をしておく\r\n' +
+    '2. ログイン（Log in）機能\r\n' +
+    'ユーザロールによる画面違いを見せたい場合、以下対応が可能：\r\n' +
+    'A：DBでなくフロントエンドにデータを持たせる\r\n' +
+    'B：URL埋め込みにする',
+  title: ''
+}
+📦 Req.file: undefined
+🤖 Gọi Gemini AI để phân tích thuật ngữ...
+[0mPOST /api/slides/analyze [32m200[0m 148.596 ms - 1028[0m
+[0mGET /api/courses [36m304[0m 5.447 ms - -[0m
+[0mGET /api/courses [36m304[0m 5.273 ms - -[0m
+📥 Req.body: [Object: null prototype] {
+  content: '実用最小限\r\n' +
+    'でない機能例\r\n' +
+    '1. サインアップ（Sign up）機能\r\n' +
+    'ユーザを登録する必要なく、DBに保存をしておく\r\n' +
+    '2. ログイン（Log in）機能\r\n' +
+    'ユーザロールによる画面違いを見せたい場合、以下対応が可能：\r\n' +
+    'A：DBでなくフロントエンドにデータを持たせる\r\n' +
+    'B：URL埋め込みにする',
+  title: ''
+}
+📦 Req.file: undefined
+🤖 Gọi Gemini AI để phân tích thuật ngữ...
+[0mPOST /api/slides/analyze [32m200[0m 186.216 ms - 1028[0m
+[0mGET /api/courses [36m304[0m 7.064 ms - -[0m
+[0mGET /api/courses [36m304[0m 6.284 ms - -[0m
+📥 Req.body: [Object: null prototype] {
+  content: '実用最小限\r\n' +
+    'でない機能例\r\n' +
+    '1. サインアップ（Sign up）機能\r\n' +
+    'ユーザを登録する必要なく、DBに保存をしておく\r\n' +
+    '2. ログイン（Log in）機能\r\n' +
+    'ユーザロールによる画面違いを見せたい場合、以下対応が可能：\r\n' +
+    'A：DBでなくフロントエンドにデータを持たせる\r\n' +
+    'B：URL埋め込みにする',
+  title: 'abc'
+}
+📦 Req.file: undefined
+🤖 Gọi Gemini AI để phân tích thuật ngữ...
+[0mPOST /api/slides/analyze [32m200[0m 145.137 ms - 1031[0m
+[0mGET /api/courses [36m304[0m 5.144 ms - -[0m
+[0mGET /api/courses [36m304[0m 4.485 ms - -[0m
+📥 Req.body: { content: 'テスト' }
+📦 Req.file: undefined
+🤖 Gọi Gemini AI để phân tích thuật ngữ...
+[0mPOST /api/slides/analyze [32m200[0m 246.683 ms - 290[0m
