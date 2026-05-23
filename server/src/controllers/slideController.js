@@ -2,20 +2,46 @@ import Slide from '../models/Slide.js';
 import Term from '../models/Term.js';
 import Course from '../models/Course.js';
 import { extractJapaneseTerms } from '../services/geminiService.js';
-import { parseOffice } from 'officeparser';
+import AdmZip from 'adm-zip';
 
-
-// ── Helper: extract text từ file PPTX dùng officeparser ─────────────────────
+// ── Helper: extract text từ file PPTX theo từng slide (dùng adm-zip) ────────
 async function extractTextFromPptx(buffer) {
-  // Khi truyền Buffer, officeparser không tự detect file type
-  // → cần khai báo fileType: 'pptx' rõ ràng
-  const text = await parseOffice(buffer, {
-    fileType: 'pptx',
-    newlineDelimiter: '\n',
-    putNewlineAfterNParagraphs: 1,
-    ignoreNotes: false,
-  });
-  return text || '';
+  try {
+    const zip = new AdmZip(buffer);
+    const zipEntries = zip.getEntries();
+    
+    // Tìm tất cả các file slide (ppt/slides/slideX.xml)
+    const slideEntries = zipEntries.filter(entry => /^ppt\/slides\/slide\d+\.xml$/.test(entry.entryName));
+    
+    // Sắp xếp theo thứ tự slide (slide1.xml, slide2.xml, ...)
+    slideEntries.sort((a, b) => {
+      const numA = parseInt(a.entryName.match(/slide(\d+)\.xml/)[1], 10);
+      const numB = parseInt(b.entryName.match(/slide(\d+)\.xml/)[1], 10);
+      return numA - numB;
+    });
+
+    const slidesText = [];
+
+    for (const entry of slideEntries) {
+      const xml = entry.getData().toString('utf8');
+      // Trích xuất text từ các thẻ <a:t>
+      const matches = [...xml.matchAll(/<a:t[^>]*>(.*?)<\/a:t>/g)];
+      // Thay thế các thực thể HTML cơ bản
+      const decodeHtml = (str) => str.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+      const text = matches.map(m => decodeHtml(m[1])).join(' ');
+      let cleanText = text.trim();
+      // Bỏ các số đơn độc ở cuối cùng của slide (thường là số trang tự động của PPTX)
+      cleanText = cleanText.replace(/(?:\r?\n|\s)*\d+(?:\r?\n|\s)*$/, '');
+      if (cleanText) {
+        slidesText.push(cleanText);
+      }
+    }
+
+    return slidesText.join('\n\n---\n\n');
+  } catch (err) {
+    console.error("Lỗi khi parse PPTX bằng adm-zip:", err);
+    throw err;
+  }
 }
 
 // ── Helper: annotate content — bold các thuật ngữ tìm được ──────────────────
@@ -140,9 +166,18 @@ export const analyzeSlide = async (req, res) => {
           if (!PDFParse) {
             throw new Error("Thư viện không được load đúng cách.");
           }
+          
           const parser = new PDFParse({ data: req.file.buffer });
           const textResult = await parser.getText();
-          content = textResult.text;
+          if (textResult.pages && Array.isArray(textResult.pages)) {
+            content = textResult.pages.map(p => {
+              let t = p.text.trim();
+              // Bỏ các số đơn độc ở cuối cùng của trang (thường là số trang PDF)
+              return t.replace(/(?:\r?\n|\s)*\d+(?:\r?\n|\s)*$/, '');
+            }).filter(Boolean).join('\n\n---\n\n');
+          } else {
+            content = textResult.text;
+          }
           if (!title) {
             title = req.file.originalname.replace(/\.pdf$/i, '');
           }

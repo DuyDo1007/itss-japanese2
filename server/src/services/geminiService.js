@@ -12,7 +12,7 @@ Nhiệm vụ của bạn là trích xuất các thuật ngữ quan trọng nhấ
 YÊU CẦU NGHIÊM NGẶT:
 1. BỘ LỌC ĐỘ KHÓ: Bỏ qua hoàn toàn các từ vựng giao tiếp cơ bản, từ nối, và các từ thuộc trình độ sơ cấp (N5, N4). Chỉ trích xuất các từ vựng ở mức độ trung - cao cấp (N3, N2 trở lên).
 2. TẬP TRUNG CHUYÊN NGÀNH: Ưu tiên tuyệt đối các thuật ngữ liên quan đến IT, phát triển phần mềm, Agile/Scrum, kinh doanh, và quản lý (ví dụ: 解決策, 仮説, 要件, 実装...).
-3. GIỚI HẠN SỐ LƯỢNG: Chỉ chọn lọc và trả về tối đa 15 - 20 từ vựng mang tính "từ khóa" cốt lõi nhất của nội dung.
+3. GIỚI HẠN SỐ LƯỢNG (QUAN TRỌNG): Chỉ chọn ra và trả về tối đa 5 - 10 từ vựng cốt lõi nhất. Trả về ít từ giúp tốc độ xử lý nhanh hơn.
 4. LOẠI TRỪ NHIỄU: Không lấy các con số, tên riêng, ký tự đặc biệt, hoặc các đoạn câu dài bị ngắt dòng. Chỉ lấy từ đơn hoặc cụm từ có nghĩa hoàn chỉnh.
 5. KHÔNG DÙNG THẺ HTML: Tuyệt đối không sử dụng các thẻ HTML (như <ruby>, <rt>, <rp>) trong bất kỳ trường nào. Các trường word, reading, furigana chỉ chứa chữ thuần tuý.
 
@@ -33,9 +33,7 @@ Trả về JSON array (KHÔNG có markdown, KHÔNG có text ngoài JSON):
     "examples": [
       {
         "sentence": "データベースを使ってデータを管理します。",
-        "furigana": "",
         "translation": {
-          "en": "We use a database to manage data.",
           "vi": "Chúng ta dùng database để quản lý dữ liệu."
         }
       }
@@ -43,6 +41,8 @@ Trả về JSON array (KHÔNG có markdown, KHÔNG có text ngoài JSON):
     "difficulty": 2
   }
 ]
+
+- examples: Chỉ cung cấp ĐÚNG 1 ví dụ ngắn gọn, và chỉ dịch sang tiếng Việt (vi). Bỏ qua tiếng Anh (en) và furigana của ví dụ để tăng tốc độ.
 
 type phải là một trong: "kanji", "katakana", "hiragana", "mixed", "romaji"
 difficulty: 1 (rất dễ) đến 5 (rất khó)`;
@@ -64,7 +64,13 @@ export async function extractJapaneseTerms(content) {
   }
 
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+    const model = genAI.getGenerativeModel({ 
+      model: 'gemini-2.5-flash',
+      generationConfig: {
+        responseMimeType: "application/json",
+        temperature: 0.2
+      }
+    });
 
     const prompt = `${SYSTEM_PROMPT}\n\n--- NỘI DUNG SLIDE ---\n${content.slice(0, 8000)}\n--- HẾT NỘI DUNG ---`;
 

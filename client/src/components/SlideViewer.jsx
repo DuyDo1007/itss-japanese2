@@ -192,7 +192,10 @@ function SlideContent({ content, terms, onTermClick }) {
     // Header chính (#) cũng có thể coi là bắt đầu slide mới (tuỳ chọn)
     const isMainHeader = line.startsWith('# ');
 
-    if (isExplicitDivider || isTripleEmpty || (isMainHeader && currentPageElements.length > 0)) {
+    // Nếu không có delimiter rõ ràng, ngắt trang khi có dòng trống sau 12 blocks
+    const isTooLong = currentPageElements.length >= 10 && trimmed === '';
+
+    if (isExplicitDivider || isTripleEmpty || (isMainHeader && currentPageElements.length > 0) || isTooLong) {
       flushList();
       if (currentPageElements.length > 0) {
         pages.push(currentPageElements);
