@@ -26,7 +26,7 @@ export default function CourseDetailPage() {
   const executeDeleteCourse = async () => {
     try {
       await courseService.delete(courseId);
-      navigate('/courses');
+      navigate('/');
     } catch (err) {
       alert('Lỗi khi xoá môn học: ' + (err.response?.data?.message || err.message));
     } finally {
@@ -63,7 +63,7 @@ export default function CourseDetailPage() {
     <main className="course-detail-page">
       <div className="course-detail-header">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-          <Link to="/courses" className="back-link" style={{ marginBottom: 0 }}>← Courses</Link>
+          <Link to="/" className="back-link" style={{ marginBottom: 0 }}>← Courses</Link>
           <button 
             onClick={handleDeleteCourseClick} 
             className="btn-icon text-muted"

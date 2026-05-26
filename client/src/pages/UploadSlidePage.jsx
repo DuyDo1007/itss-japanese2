@@ -255,7 +255,7 @@ function AnalysisResult({ result, onReset }) {
         <p>
           {dbTerms.length > 0 && `${dbTerms.length} thuật ngữ từ DB`}
           {dbTerms.length > 0 && newTerms.length > 0 && ' + '}
-          {newTerms.length > 0 && <strong>{newTerms.length} thuật ngữ mới (AI phát hiện &amp; đã lưu vào DB)</strong>}
+          {newTerms.length > 0 && <strong>{newTerms.length} thuật ngữ mới (phát hiện &amp; đã lưu vào DB)</strong>}
           {dbTerms.length === 0 && newTerms.length === 0 && 'Slide đã được lưu.'}
         </p>
         <div className="success-actions">
@@ -276,7 +276,7 @@ function AnalysisResult({ result, onReset }) {
       {newTerms.length > 0 && (
         <div className="found-terms-section found-terms-section--new">
           <h3 className="section-title">
-            Thuật ngữ mới — AI phát hiện &amp; đã lưu vào Database
+            Thuật ngữ mới — phát hiện &amp; đã lưu vào Database
             <span className="section-badge section-badge--green">{newTerms.length}</span>
           </h3>
           <div className="found-terms-grid">
@@ -423,7 +423,7 @@ export default function UploadSlidePage() {
           Upload Slide
         </h1>
         <p className="upload-page-sub">
-          Upload file <strong>.txt</strong>, <strong>.md</strong> hoặc <strong>.pptx</strong> — AI tự động nhận diện &amp; lưu thuật ngữ tiếng Nhật mới vào database
+          Upload file <strong>.txt</strong>, <strong>.md</strong> hoặc <strong>.pptx</strong> — Tự động nhận diện &amp; lưu thuật ngữ tiếng Nhật mới vào database
         </p>
 
         {/* Stepper */}
@@ -435,7 +435,7 @@ export default function UploadSlidePage() {
           <div className="step-line" />
           <div className={`step ${step === 'analyzing' ? 'step--active' : step === 'result' ? 'step--done' : ''}`}>
             <span className="step-num">2</span>
-            <span>AI phân tích</span>
+            <span>Phân tích</span>
           </div>
           <div className="step-line" />
           <div className={`step ${step === 'result' ? 'step--active' : ''}`}>
@@ -459,9 +459,9 @@ export default function UploadSlidePage() {
         {step === 'analyzing' && (
           <div className="page-loading" style={{ minHeight: '300px' }}>
             <div className="spinner" />
-            <p>AI đang phân tích thuật ngữ tiếng Nhật...</p>
+            <p>Đang phân tích thuật ngữ tiếng Nhật...</p>
             <p className="text-muted" style={{ fontSize: '0.85rem' }}>
-              Đang trích xuất nội dung &amp; gọi Gemini AI — có thể mất 10-30 giây
+              Đang trích xuất nội dung &amp; phân tích — có thể mất 10-30 giây
             </p>
           </div>
         )}

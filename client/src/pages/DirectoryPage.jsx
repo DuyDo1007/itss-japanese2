@@ -48,7 +48,7 @@ export default function DirectoryPage() {
           <span>Directory</span>
         </h1>
         <p className="page-hero-sub">
-          Truy cập nhanh toàn bộ thuật ngữ đã được AI nhận diện từ các slide, chia theo từng môn học.
+          Truy cập nhanh toàn bộ thuật ngữ đã được nhận diện từ các slide, chia theo từng môn học.
         </p>
         <div className="directory-search-wrapper" style={{ marginTop: '1.5rem', maxWidth: '600px', width: '100%' }}>
           <input
