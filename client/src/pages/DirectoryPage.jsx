@@ -5,6 +5,7 @@ export default function DirectoryPage() {
   const [directoryData, setDirectoryData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     courseService
@@ -22,6 +23,19 @@ export default function DirectoryPage() {
       </div>
     );
   }
+
+  const allTerms = directoryData.flatMap(c => c.terms || []);
+  const suggestedTerms = searchQuery && isFocused
+    ? allTerms.filter(t => {
+        const query = searchQuery.toLowerCase();
+        return (
+          t.word?.toLowerCase().includes(query) ||
+          t.romaji?.toLowerCase().includes(query) ||
+          t.furigana?.toLowerCase().includes(query) ||
+          t.definitions?.vi?.toLowerCase().includes(query)
+        );
+      }).slice(0, 8)
+    : [];
 
   const filteredData = directoryData
     .map(course => {
@@ -50,15 +64,37 @@ export default function DirectoryPage() {
         <p className="page-hero-sub">
           Truy cập nhanh toàn bộ thuật ngữ đã được nhận diện từ các slide, chia theo từng môn học.
         </p>
-        <div className="directory-search-wrapper" style={{ marginTop: '1.5rem', maxWidth: '600px', width: '100%' }}>
+        <div className="directory-search-wrapper" style={{ margin: '1.5rem auto 0', maxWidth: '600px', width: '100%', position: 'relative' }}>
           <input
             type="text"
             className="form-input"
             placeholder="Tìm kiếm thuật ngữ tiếng Nhật, Romaji, tiếng Việt..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setTimeout(() => setIsFocused(false), 200)}
             style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px' }}
           />
+
+          {isFocused && searchQuery && suggestedTerms.length > 0 && (
+            <div className="search-dropdown">
+              {suggestedTerms.map(t => (
+                <div 
+                  key={t._id} 
+                  className="search-dropdown-item"
+                  onClick={() => {
+                    setSearchQuery(t.word);
+                    setIsFocused(false);
+                  }}
+                  style={{ display: 'grid', gridTemplateColumns: 'minmax(120px, auto) minmax(120px, auto) 1fr', gap: '1rem', alignItems: 'center' }}
+                >
+                  <span className="jp-text" style={{ fontWeight: 600, fontSize: '1.1rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{t.word}</span>
+                  <span className="text-muted" style={{ fontSize: '0.85rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{t.romaji}</span>
+                  <span className="text-secondary" style={{ fontSize: '0.85rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', textAlign: 'right' }}>{t.definitions?.vi}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

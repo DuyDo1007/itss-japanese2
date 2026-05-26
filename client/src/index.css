@@ -301,7 +301,7 @@ ruby rt {
   border: 1px solid var(--border-accent);
   border-radius: var(--radius-lg);
   padding: 3rem 4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
   box-shadow: 0 12px 36px rgba(0,0,0,0.6), 0 0 0 1px rgba(124,106,247,0.4);
   min-height: 400px;
 }
@@ -1192,3 +1192,36 @@ ruby rt {
   color: var(--accent-light); font-weight: 600;
 }
 .lang-btn-mini:hover:not(.lang-btn-mini--active) { color: var(--text-secondary); }
+
+/* -- Search Dropdown -- */
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg-popup);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-md);
+  margin-top: 0.5rem;
+  box-shadow: var(--shadow-popup);
+  z-index: 50;
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.search-dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.search-dropdown-item:last-child {
+  border-bottom: none;
+}
+.search-dropdown-item:hover {
+  background: var(--bg-hover);
+}

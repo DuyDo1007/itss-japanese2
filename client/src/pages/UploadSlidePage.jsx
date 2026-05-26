@@ -252,12 +252,7 @@ function AnalysisResult({ result, onReset }) {
     return (
       <div className="save-success">
         <h2>Slide đã được lưu thành công!</h2>
-        <p>
-          {dbTerms.length > 0 && `${dbTerms.length} thuật ngữ từ DB`}
-          {dbTerms.length > 0 && newTerms.length > 0 && ' + '}
-          {newTerms.length > 0 && <strong>{newTerms.length} thuật ngữ mới (phát hiện &amp; đã lưu vào DB)</strong>}
-          {dbTerms.length === 0 && newTerms.length === 0 && 'Slide đã được lưu.'}
-        </p>
+
         <div className="success-actions">
           <button className="btn-primary" onClick={() => navigate(`/slides/${savedSlideId}`)}>
             Xem Slide
@@ -276,7 +271,7 @@ function AnalysisResult({ result, onReset }) {
       {newTerms.length > 0 && (
         <div className="found-terms-section found-terms-section--new">
           <h3 className="section-title">
-            Thuật ngữ mới — phát hiện &amp; đã lưu vào Database
+            Thuật ngữ mới
             <span className="section-badge section-badge--green">{newTerms.length}</span>
           </h3>
           <div className="found-terms-grid">
