@@ -23,7 +23,7 @@ export default function Navbar() {
           <Link to="/" className={`navbar-link ${isActive('/') ? 'navbar-link--active' : ''}`}>
             Courses
           </Link>
-          <Link to="/upload" className={`navbar-link navbar-link--upload ${isActive('/upload') ? 'navbar-link--active' : ''}`}>
+          <Link to="/upload" className={`navbar-link ${isActive('/upload') ? 'navbar-link--active' : ''}`}>
             Upload Slide
           </Link>
           <Link to="/directory" className={`navbar-link ${isActive('/directory') ? 'navbar-link--active' : ''}`}>

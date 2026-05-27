@@ -85,8 +85,8 @@ export default function QuizModal({ slideId, onClose }) {
         {total} câu hỏi · Slide: <span className="jp-text">{quiz.slideTitle}</span>
       </p>
 
-      <div className="quiz-lang-row">
-        <span>Ngôn ngữ đáp án:</span>
+      <div className="quiz-lang-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem', width: '100%', maxWidth: '400px', marginBottom: '1.5rem' }}>
+        <span style={{ gridColumn: '1 / -1', textAlign: 'center', marginBottom: '0.25rem' }}>Ngôn ngữ đáp án:</span>
         {[{k:'vi',l:'🇻🇳 Tiếng Việt'},{k:'en',l:'🇬🇧 English'},{k:'ja',l:'🇯🇵 日本語'}].map(({k,l}) => (
           <button
             key={k}

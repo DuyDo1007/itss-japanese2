@@ -173,7 +173,7 @@ function AnalysisResult({ result, onReset }) {
   useEffect(() => { sessionStorage.setItem('upload_selected_course', selectedCourseId); }, [selectedCourseId]);
 
 
-  
+
   // Dictionary popup state
   const [selectedTerm, setSelectedTerm] = useState(null);
   const [popupPos, setPopupPos] = useState({ x: 0, y: 0 });
@@ -418,7 +418,7 @@ export default function UploadSlidePage() {
           Upload Slide
         </h1>
         <p className="upload-page-sub">
-          Upload file <strong>.txt</strong>, <strong>.md</strong> hoặc <strong>.pptx</strong> — Tự động nhận diện &amp; lưu thuật ngữ tiếng Nhật mới vào database
+          Upload file <strong>.txt</strong>, <strong>.md</strong> hoặc <strong>.pptx</strong> — Tự động nhận diện &amp; lưu thuật ngữ tiếng Nhật
         </p>
 
         {/* Stepper */}
