@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import CoursesPage from './pages/CoursesPage.jsx';
 import CourseDetailPage from './pages/CourseDetailPage.jsx';
@@ -13,11 +13,12 @@ export default function App() {
         <Navbar />
         <div className="app-content">
           <Routes>
-            <Route path="/" element={<CoursesPage />} />
+            <Route path="/" element={<Navigate to="/upload" replace />} />
+            {/* <Route path="/courses" element={<CoursesPage />} /> */}
             <Route path="/courses/:courseId" element={<CourseDetailPage />} />
             <Route path="/slides/:slideId" element={<SlidePage />} />
             <Route path="/upload" element={<UploadSlidePage />} />
-            <Route path="/directory" element={<DirectoryPage />} />
+            {/* <Route path="/directory" element={<DirectoryPage />} /> */}
           </Routes>
         </div>
       </div>
