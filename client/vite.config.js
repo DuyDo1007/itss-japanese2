@@ -12,7 +12,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'https://itss-japanese2.onrender.com',
+        target: 'https://itss-japanese2-1.onrender.com',
         changeOrigin: true,
       },
     },
